@@ -1,3 +1,4 @@
+import { RootStore } from './../store';
 // user auth actions
 import backendHost from "../constants/api-config";
 import { Dispatch } from "redux";
@@ -15,7 +16,7 @@ import {
 import axios from "axios";
 
 // ****************************** Check token & load user ****************************** //
-export const loadUser = () => (dispatch: Dispatch<UserDispatchTypes>, getState: any) => {
+export const loadUser = () => (dispatch: Dispatch<UserDispatchTypes>, getState: RootStore) => {
   // User loading
   dispatch({ type: USER_LOADING });
 

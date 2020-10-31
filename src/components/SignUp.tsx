@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { register } from "../actions/authActions"
+import { useHistory } from 'react-router-dom';
+import { register } from "../actions/authActions";
 
-const SignUp = () => {
+const SignUp: React.FC = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
@@ -21,9 +23,10 @@ const SignUp = () => {
     }
   };
 
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     dispatch(register(name, username, email, password));
+    history.push("/");
   };
 
   return (

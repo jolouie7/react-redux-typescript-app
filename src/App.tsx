@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { getPokemon } from './actions/pokemonActions';
 import Login from './components/Login';
@@ -9,7 +9,7 @@ import SignUp from './components/SignUp';
 import { RootStore } from './store';
 
 
-function App() {
+const App: React.FC = () => {
   const dispatch = useDispatch();
   const authState = useSelector((state: RootStore) => state.auth)
   const [pokemonName, setPokemonName] = useState("");

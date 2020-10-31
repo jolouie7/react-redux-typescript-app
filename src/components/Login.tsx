@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import { login } from "../actions/authActions";
 
 
-const Login = () => {
+const Login: React.FC = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -17,9 +19,10 @@ const Login = () => {
     }
   };
 
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     dispatch(login(username, password));
+    history.push("/");
   };
 
   return (
